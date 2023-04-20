@@ -50,12 +50,12 @@ class ISICDataset(Dataset):
             torch.set_rng_state(state)
             # mask = np.array(mask)
             # mask = mask / 255.0
-            # print("np.unique(mask):",np.unique(mask))
+            print("np.unique(mask):",np.unique(mask))
             mask = self.transform(mask)
-            mask[mask==0]=0
-            mask[mask==0.627451]=2
-            mask[mask==1]=3
-            mask[mask==0.3137255]=1
-        # print("np.unique(mask):",np.unique(mask))
+            # mask[mask==0]=0
+            # mask[mask==0.627451]=2
+            # mask[mask==1]=3
+            # mask[mask==0.3137255]=1
+        print("np.unique(mask):",np.unique(mask))
         final_name = '{:0>4}'.format(name)+".png"
         return (img, mask, final_name)
