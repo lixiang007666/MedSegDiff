@@ -26,9 +26,9 @@ def main():
     logger.configure(dir = args.out_dir)
 
     logger.log("creating data loader...")
-
+    resize = transforms.Resize((args.image_size, args.image_size), interpolation=transforms.InterpolationMode.NEAREST)
     if args.data_name == 'ISIC':
-        tran_list = [transforms.Resize((args.image_size,args.image_size)), transforms.ToTensor(),]
+        tran_list = [resize, transforms.ToTensor(),]
         transform_train = transforms.Compose(tran_list)
 
         ds = ISICDataset(args, args.data_dir, transform_train)
